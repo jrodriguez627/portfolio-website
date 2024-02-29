@@ -1,0 +1,198 @@
+:root {
+/*colors*/   
+    --palegreen: rgba(96, 136, 87, 0.48);
+    --lightpalegreen: rgba(110, 190, 92, 0.48);
+    --lighterpalegreen: rgba(107, 238, 78, 0.48);
+    --rustbrown: rgb(123, 63,0); 
+    --grayblack: rgb(43, 43, 43);
+    --darkteal: rgb(6,90,96);
+    --kermitgreen: rgb(34,130,10);
+    --black: rgb(0, 0, 0);
+    --mediumblue: rgb(79, 134, 224);
+    --gold: rgb(237, 198, 85);
+    --canaryyellow: rgb(252, 255, 173);
+    --orange: rgb(247, 100, 20);
+    --lightgray: rgb(211, 211, 211);
+/*sizes*/
+    --fontweight: 600;
+    --mediumopacity: 0.5;
+    --lowpadding: 20px;
+    --lowgap: 15px;
+    --halfduration: 0.5s;
+}
+
+body {
+    font-family: 'Protest Riot', sans-serif;
+    font-weight: var(--fontweight);
+    font-style: normal;
+    font-variant: small-caps;
+    background: linear-gradient(135deg, var(--palegreen), var(--lightpalegreen), var(--lighterpalegreen));
+}
+* {
+    box-sizing: border-box;
+}
+a {
+   color: var(--rustbrown); 
+   transition-duration: var(--halfduration); opacity: var(--mediumopacity);
+}
+p {
+    color: var(--grayblack);
+}
+a:visited {
+    /* visited link */
+    color: var(--darkteal);
+}
+a:hover, 
+a:focus {
+    /* No underlining when hovering over a link */
+    text-decoration: none;
+    cursor: pointer;
+    opacity: var(--mediumopacity);
+    transform: scale(1.1)
+}
+a:active {
+    /* selected link */
+    color: var(--kermitgreen);
+}
+.page-header {
+    display: flex;
+    width: 100%;
+    padding: var(--lowpadding);
+}
+.page-header_item {
+    flex: 0 1 200px;
+}
+.page-header_item:last-child {
+    flex-grow: 1;
+    text-align: right;
+}
+.navigation-list {
+    list-style-type: none;
+}
+.naviagtion-list_item--active {
+    text-decoration: none;
+}
+.navigation-list li {
+    display: inline-block;
+    margin-left: 15px;
+}
+.button, button {
+    /* overwrites browser defaults and resets the border */
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    background-color: var(--mediumblue);
+    color: var(--black);
+    text-decoration: none;
+    /*adds spacing to the button */
+    padding: var(--lowpadding);
+    border-radius: 3px;
+    /*gives the bottom border with a width of 2px,... */
+    border-bottom: 2px solid var(--black);
+    transition-duration: var(--halfduration); transition-property: none;
+}
+button:hover, 
+button:focus,
+.button:hover,
+.button:focus {
+    cursor: pointer;
+    opacity: var(--mediumopacity);
+}
+.work {
+    text-align: center;
+}
+.about-me {
+    text-align: center;
+    text-decoration: solid;
+}
+.profile_portrait {
+    float: left;
+    width: 250px;
+    margin-right: 40px;
+    border-radius: 50%;
+}
+.profile {
+    max-width: 700px;
+    margin: 0 auto;
+}
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: var(--fontweight);
+    font-style: oblique;
+}
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: var(--lowgap);
+}
+.project-list_item :last-child {
+    grid-column: 4/4;
+    grid-row: 1/2;
+}
+.project-list_item {
+    background-color: var(--lightgray);
+}
+.sun {
+    animation: 5s color-change infinite alternate-reverse linear;
+}
+.cloud-front {
+    animation: 10s cloud-move infinite alternate linear;
+}
+.cloud-back {
+    animation: 15s cloud-move-reverse infinite alternate linear;
+}
+@keyframes cloud-move-reverse {
+    from {
+        transform: translate(466px, 48px);
+    }
+    to {
+        transform: translate(100px, 48px);
+    }    
+}
+@keyframes cloud-move {
+    from {
+        transform: translate(0, 60px);
+    }
+    to {
+        transform: translate(180px, 60px)
+    }
+}
+@keyframes color-change {
+    0% {
+        fill: var(--gold);
+    }
+    50% {
+        fill: var(--canaryyellow);
+    }
+    100% {
+        fill: var(--orange);
+    }
+}
+@media all and (max-width: 500px) {
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+}
+@media all and (min-width: 500px) and (max-width: 750px){
+    .project-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media all and (max-width: 750px) {
+    .project-list {
+        grid-gap: var(--lowgap);
+    }
+    .project-list_item:last-child {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
+    }
+    h1 {
+        font-size: 21px;
+    }
+}
